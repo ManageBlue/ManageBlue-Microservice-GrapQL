@@ -5,7 +5,6 @@ const server = express();
 const config = require('./config/config')
 
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
 
 const port = config.port
 const url = config.url
@@ -27,37 +26,11 @@ server.use(bodyParser.urlencoded({ extended: true }));
 //----------------------------------------------------------------------------------------------------------------------
 // graphql init
 
-const schema = buildSchema(`
-  type Query {
-    id: String
-    title: String
-    members: [member]
-    totalHours: Float
-    totalOwed: Float
-    totalPaid: Float
-  }
-`);
 
-const member = buildSchema(`
-    type Member {
-        id: String
-        firstName: String
-        lastName: String
-        totalHours: Float
-        totalOwed: Float
-        totalPaid: Float
-  }
-    
-`)
-
-const root = {
-    hello: () => 'Hello world!',
-    test: () => 'aaa aaa aaa',
-};
+const schema_file = require('./models/schema')
 
 server.use('/graphql', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema: schema_file,
     graphiql: true,
 }));
 
