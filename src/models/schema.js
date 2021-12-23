@@ -41,11 +41,12 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(Project),
             resolve(parentValue, args) {
                 const values = {
-                    id: "TODO",
-                    title: "TODO",
+                    id: "1",
+                    projectId: "61c4580b87283c4e5b3a01cb",
                     members: [
                         {
-                            id: "TODO",
+                            id: "1",
+                            userId: "615d6e3f148db6592a35fe4d",
                             firstName: "Matej",
                             lastName: "Horvat",
                             totalHours: 100,
@@ -53,7 +54,8 @@ const RootQuery = new GraphQLObjectType({
                             totalOwed: 1200,
                         },
                         {
-                            id: "TODO",
+                            id: "2",
+                            userId: "615dbe8354c1336bde16918e",
                             firstName: "Lan",
                             lastName: "Sovinc",
                             totalHours: 69,

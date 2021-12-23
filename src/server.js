@@ -29,7 +29,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 const schema_file = require('./models/schema')
 
-server.use('/graphql', graphqlHTTP({
+server.use('/graphql/api/v1', graphqlHTTP({
     schema: schema_file,
     graphiql: true,
 }));
